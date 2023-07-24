@@ -1,0 +1,14 @@
+package com.myspace.insurancepolicyrulestoringresponse;
+
+import java.lang.Number;
+
+rule "Pass AnnualIncome"
+	dialect "mvel"
+	salience 2
+	when
+		$B : Insurance( annual_income >= 300000 )
+	then
+		modify( $B ) {
+				setStatusAnnualIncome( "Pass" )
+		}
+end

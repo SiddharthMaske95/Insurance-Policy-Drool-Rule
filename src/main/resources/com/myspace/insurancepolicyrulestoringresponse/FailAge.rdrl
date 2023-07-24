@@ -1,0 +1,14 @@
+package com.myspace.insurancepolicyrulestoringresponse;
+
+import java.lang.Number;
+
+rule "FailAge"
+	dialect "mvel"
+	salience 2
+	when
+		$X : Insurance( age < 18 )
+	then
+		modify( $X ) {
+				setStatusAge( "Fail" )
+		}
+end

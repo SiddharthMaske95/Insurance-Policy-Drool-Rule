@@ -1,0 +1,14 @@
+package com.myspace.insurancepolicyrulestoringresponse;
+
+import java.lang.Number;
+
+rule "AgePass"
+	dialect "mvel"
+	salience 2
+	when
+		$Z : Insurance( age >= 18 )
+	then
+		modify( $Z ) {
+				setStatusAge( "Pass" )
+		}
+end

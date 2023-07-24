@@ -1,0 +1,14 @@
+package com.myspace.insurancepolicyrulestoringresponse;
+
+import java.lang.Number;
+
+rule "Pass Medical"
+	dialect "mvel"
+	salience 2
+	when
+		$O : Insurance( medical_history == "Fever" || medical_history == "Dry cough" || medical_history == "Sore trout" || medical_history == "Thyroid" )
+	then
+		modify( $O ) {
+				setStatusMedical_History( "Pass" )
+		}
+end

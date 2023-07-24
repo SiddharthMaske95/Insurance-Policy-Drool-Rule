@@ -1,0 +1,14 @@
+package com.myspace.insurancepolicyrulestoringresponse;
+
+import java.lang.Number;
+
+rule "Fail Medical"
+	dialect "mvel"
+	salience 2
+	when
+		$P : Insurance( medical_history == "Cancer" || medical_history == "Blood pressure" || medical_history == "Heart attack" || medical_history == "Breathing difficulties" || medical_history == "Diarrhea" )
+	then
+		modify( $P ) {
+				setStatusMedical_History( "Fail" )
+		}
+end

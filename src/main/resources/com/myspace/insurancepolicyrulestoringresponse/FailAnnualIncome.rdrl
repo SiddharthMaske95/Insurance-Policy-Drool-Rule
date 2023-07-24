@@ -1,0 +1,14 @@
+package com.myspace.insurancepolicyrulestoringresponse;
+
+import java.lang.Number;
+
+rule "FailAnnualIncome"
+	dialect "mvel"
+	salience 2
+	when
+		$N : Insurance( annual_income < 300000 )
+	then
+		modify( $N ) {
+				setStatusAnnualIncome( "Fail" )
+		}
+end

@@ -1,0 +1,14 @@
+package com.myspace.insurancepolicyrulestoringresponse;
+
+import java.lang.Number;
+
+rule "FailOccupation"
+	dialect "mvel"
+	salience 2
+	when
+		$V : Insurance( occupation == "Unemployeed" )
+	then
+		modify( $V ) {
+				setStatusOccupation( "Fail" )
+		}
+end
